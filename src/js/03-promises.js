@@ -20,14 +20,14 @@ function createPromise(position, delay) {
 
 function onSubmit(event) {
   event.preventDefault();
-  for (let position = 1; position <= amount.value; position += 1) {
+  for (let position = 0; position < amount.value; position += 1) {
     let delay = parseInt(delayInp.value) + parseInt(step.value) * position;
     createPromise(position, delay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(`✅ Fulfilled promise ${position+1} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(`❌ Rejected promise ${position+1} in ${delay}ms`);
       });
   };
 };
